@@ -1,1 +1,1 @@
-class Maquina:
+class Maquina: asdf

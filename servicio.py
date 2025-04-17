@@ -43,5 +43,11 @@ class Servicio:
     def agregar_snack(self,snack):
         self.snacks.append(snack)
         self.guardar_snacks_archivo([snack])
+    def mostrar_snacks(self):
+        print('---En el inventario hay los siguientes snacks---')
+        for snack in self.snacks:
+            print(snack)
+    def get_snacks(self):
+        return self.snacks
     
         

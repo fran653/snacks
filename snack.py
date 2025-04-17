@@ -1,6 +1,6 @@
 class Snack:
     contador_snacks = 0
-    def __init(self, nombre='', precio = 0.0):
+    def __init__(self, nombre='', precio = 0.0):
         Snack.contador_snacks += 1
         self.id = Snack.contador_snacks
         self.nombre = nombre
