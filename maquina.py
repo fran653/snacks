@@ -1,4 +1,5 @@
 from servicio import Servicio
+from snack import Snack
 class MaquinaSnacks:
     def __init__(self):
         self.servicio_snacks = Servicio()
@@ -38,7 +39,30 @@ class MaquinaSnacks:
     
     def comprar_snack(self):
         id_snack = int(input('Ingrese el ID del snack que desea comprar: '))
-        next()
-        self.servicio_snacks.get_snacks() 
-    
+        snacks = self.servicio_snacks.get_snacks()
+        snack = next((snack for snack in snacks if snack.id == id_snack), None)
+        if snack:
+            self.productos.append(snack)
+            print(f'Snack encontrado: {snack}')
+        else:
+            print(f'Snack con ID {id_snack} no encontrado')
+    def mostrar_ticket(self):
+        if not self.productos:
+            print('No hay productos en el ticket')
+            return
+        total = sum(snack.precio for snack in self.productos)   
+        print('---Ticket de compra---')
+        for producto in self.productos:
+            print(f'\t- {producto.nombre} - ${producto.precio:.2f}')
+        print(f'\t Total: ${total:.2f}')   
+    def agregar_snack(self):
+        nombre = input('Ingrese el nombre del snack: ')
+        precio = float(input('Ingrese el precio del snack: '))
+        nuevo_snack = Snack(nombre, precio)
+        self.servicio_snacks.agregar_snack(nuevo_snack)
+        print(f'Snack {nuevo_snack.nombre} agregado con éxito')  
         
+#programa principal, que inicia toda la aplicación       
+if __name__ == '__main__':
+    maquina = MaquinaSnacks()
+    maquina.maquina_snacks()
